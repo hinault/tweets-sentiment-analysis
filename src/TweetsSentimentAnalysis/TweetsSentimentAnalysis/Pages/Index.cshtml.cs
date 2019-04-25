@@ -28,6 +28,11 @@ namespace TweetsSentimentAnalysis.Pages
         public void OnGet()
         {
             Tweets = _tweetsSearch.GetTweets("GlobalAzure");
+
+            Results =  _textAnalyticsService.Language(Tweets).Result;
+
+            Results = _textAnalyticsService.Sentiment(Results).Result;
+
         }
     }
 }

@@ -35,7 +35,7 @@ namespace TweetsSentimentAnalysis.Services
 
             
             //searchParameter.SearchType = SearchResultType.Popular;
-            searchParameter.MaximumNumberOfResults = 100;
+            searchParameter.MaximumNumberOfResults = 50;
             
 
             var tweets = Search.SearchTweets(searchParameter);

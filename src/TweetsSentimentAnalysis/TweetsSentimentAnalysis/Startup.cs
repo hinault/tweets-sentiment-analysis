@@ -40,6 +40,7 @@ namespace TweetsSentimentAnalysis
             });
 
             services.AddSingleton<ITweetsSearch, TweetsSearch>();
+            services.AddSingleton<ITextAnalyticsService, TextAnalyticsService>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 

@@ -44,7 +44,7 @@ namespace TweetsSentimentAnalysis.Services
             foreach(var document in langResults.Documents)
             {
                 resultsModel.Add(new ResultModel { Language = document.DetectedLanguages[0].Name,
-                    LanguageIso = document.DetectedLanguages[0].Name, Id = document.Id,
+                    LanguageIso = document.DetectedLanguages[0].Iso6391Name, Id = document.Id,
                     Text = tweets.ElementAt(int.Parse(document.Id) - 1) });
 
                 _logger.LogInformation($"Document ID: {document.Id} , Language: {document.DetectedLanguages[0].Name}");
@@ -63,7 +63,7 @@ namespace TweetsSentimentAnalysis.Services
 
             foreach(var item in result)
             {
-                multilanguagesInput.Add(new MultiLanguageInput(item.Id, item.LanguageIso, item.Text));
+                multilanguagesInput.Add(new MultiLanguageInput(item.LanguageIso, item.Id, item.Text));
             }
 
             var sentimentResults = await _client.SentimentAsync(
