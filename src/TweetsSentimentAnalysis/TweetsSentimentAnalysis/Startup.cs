@@ -33,7 +33,12 @@ namespace TweetsSentimentAnalysis
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            services.AddSingleton<ITextAnalyticsClient, TextAnalyticsClient()>();
+           
+            services.AddSingleton<ITextAnalyticsClient>(s=> new TextAnalyticsClient(new ApiKeyServiceClientCredentials(Configuration.GetValue<string>("Textanalytics:SubscriptionKey")))
+            {
+                Endpoint = Configuration.GetValue<string>("Textanalytics:EndPoint")
+            });
+
             services.AddSingleton<ITweetsSearch, TweetsSearch>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
