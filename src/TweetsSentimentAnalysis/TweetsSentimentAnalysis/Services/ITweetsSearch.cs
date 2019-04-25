@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace TweetsSentimentAnalysis.Services
 {
-    interface ITweetsSearch
+    public interface ITweetsSearch
     {
         IList<string> GetTweets(string tag);
     }
