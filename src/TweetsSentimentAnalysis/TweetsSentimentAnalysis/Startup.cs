@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Azure.CognitiveServices.Language.TextAnalytics;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using TweetsSentimentAnalysis.Services;
@@ -32,6 +33,7 @@ namespace TweetsSentimentAnalysis
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+            services.AddSingleton<ITextAnalyticsClient, TextAnalyticsClient()>();
             services.AddSingleton<ITweetsSearch, TweetsSearch>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
