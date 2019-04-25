@@ -40,7 +40,7 @@ namespace TweetsSentimentAnalysis.Services
 
             var tweets = Search.SearchTweets(searchParameter);
 
-          return  tweets.Select(x => x.FullText).ToList();
+          return  tweets!=null && tweets.Any() ? tweets.Select(x => x.FullText).ToList() : new List<string>();
         }
     }
 }

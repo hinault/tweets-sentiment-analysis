@@ -72,7 +72,7 @@ namespace TweetsSentimentAnalysis.Services
 
             foreach (var document in sentimentResults.Documents)
             {
-                result.Single(x => x.Id == document.Id).Score = document.Score.Value.ToString("#,##");
+                result.Single(x => x.Id == document.Id).Score = document.Score.Value.ToString();
               
                 _logger.LogInformation($"Document ID: {document.Id} , Sentiment Score: {document.Score:0.00}");
             }

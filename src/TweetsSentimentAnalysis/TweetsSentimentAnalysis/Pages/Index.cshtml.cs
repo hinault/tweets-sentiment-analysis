@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -12,9 +13,13 @@ namespace TweetsSentimentAnalysis.Pages
     public class IndexModel : PageModel
     {
 
-        public IList<string> Tweets;
-        public IList<ResultModel> Results;
+        public IList<string> Tweets { get; set; }
+        public IList<ResultModel> Results { get; set; }
 
+        [Required]
+        [StringLength(50)]
+        [BindProperty] 
+        public string Tag { get; set; }
 
         private readonly ITweetsSearch _tweetsSearch;
         private readonly ITextAnalyticsService _textAnalyticsService;
@@ -27,12 +32,21 @@ namespace TweetsSentimentAnalysis.Pages
 
         public void OnGet()
         {
-            Tweets = _tweetsSearch.GetTweets("GlobalAzure");
+            Results = new List<ResultModel>();
+        }
 
-            Results =  _textAnalyticsService.Language(Tweets).Result;
+        public void OnPost()
+        {
+            Results = new List<ResultModel>();
+
+            Tweets = _tweetsSearch.GetTweets(Tag);
+
+            if(Tweets.Any())
+            { 
+            Results = _textAnalyticsService.Language(Tweets).Result;
 
             Results = _textAnalyticsService.Sentiment(Results).Result;
-
+            }
         }
     }
 }
