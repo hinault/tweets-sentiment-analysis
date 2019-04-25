@@ -15,6 +15,7 @@ namespace TweetsSentimentAnalysis.Services
 
         public TweetsSearch(ILogger<TweetsSearch> logger)
         {
+            Auth.SetUserCredentials("CONSUMER_KEY", "CONSUMER_SECRET", "ACCESS_TOKEN", "ACCESS_TOKEN_SECRET");
             _logger = logger;
         }
 
@@ -29,7 +30,7 @@ namespace TweetsSentimentAnalysis.Services
 
             
             searchParameter.SearchType = SearchResultType.Popular;
-            searchParameter.MaximumNumberOfResults = 200;
+            searchParameter.MaximumNumberOfResults = 100;
             
 
             var tweets = Search.SearchTweets(searchParameter);
