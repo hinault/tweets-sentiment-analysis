@@ -18,7 +18,7 @@ namespace TweetsSentimentAnalysis.Services
             _logger = logger;
         }
 
-        public IList<string> GetTweets(string tag)
+        public List<string> GetTweets(string tag)
         {
 
             _logger.LogInformation(

@@ -11,7 +11,7 @@ namespace TweetsSentimentAnalysis.Pages
     public class IndexModel : PageModel
     {
 
-        public IList<string> Tweets;
+        public List<string> Tweets;
         private ITweetsSearch _tweetsSearch;
         public IndexModel(ITweetsSearch tweetsSearch)
         {
