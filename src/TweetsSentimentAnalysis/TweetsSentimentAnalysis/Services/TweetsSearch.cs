@@ -10,9 +10,10 @@ namespace TweetsSentimentAnalysis.Services
     public class TweetsSearch
     {
 
+
         public IList<string> GetTweets(string tag)
         {
-            var searchParameter = Search.CreateTweetSearchParameter("#my_tag");
+            var searchParameter = Search.CreateTweetSearchParameter("#"+tag);
 
             
             searchParameter.SearchType = SearchResultType.Popular;
