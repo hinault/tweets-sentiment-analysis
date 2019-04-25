@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Extensions.Logging;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -10,9 +11,20 @@ namespace TweetsSentimentAnalysis.Services
     public class TweetsSearch : ITweetsSearch
     {
 
+        private readonly ILogger<TweetsSearch> _logger;
+
+        public TweetsSearch(ILogger<TweetsSearch> logger)
+        {
+            _logger = logger;
+        }
 
         public IList<string> GetTweets(string tag)
         {
+
+            _logger.LogInformation(
+            "TweetsSearch.GetTweets called. tag: {TAG}",
+            tag);
+
             var searchParameter = Search.CreateTweetSearchParameter("#"+tag);
 
             
