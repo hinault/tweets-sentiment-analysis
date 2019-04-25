@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using TweetsSentimentAnalysis.Models;
 using TweetsSentimentAnalysis.Services;
 
 namespace TweetsSentimentAnalysis.Pages
@@ -12,11 +13,16 @@ namespace TweetsSentimentAnalysis.Pages
     {
 
         public IList<string> Tweets;
-        private ITweetsSearch _tweetsSearch;
-        public IndexModel(ITweetsSearch tweetsSearch)
+        public IList<ResultModel> Results;
+
+
+        private readonly ITweetsSearch _tweetsSearch;
+        private readonly ITextAnalyticsService _textAnalyticsService;
+        public IndexModel(ITweetsSearch tweetsSearch, ITextAnalyticsService textAnalyticsService)
         {
 
             _tweetsSearch = tweetsSearch;
+            _textAnalyticsService = textAnalyticsService;
         }
 
         public void OnGet()

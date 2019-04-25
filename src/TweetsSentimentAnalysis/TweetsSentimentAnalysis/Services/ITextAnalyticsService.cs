@@ -6,7 +6,7 @@ using TweetsSentimentAnalysis.Models;
 
 namespace TweetsSentimentAnalysis.Services
 {
-    interface ITextAnalyticsService
+    public interface ITextAnalyticsService
     {
         Task<IList<ResultModel>> Sentiment(IList<ResultModel> result);
 
