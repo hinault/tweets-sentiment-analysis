@@ -7,6 +7,6 @@ namespace TweetsSentimentAnalysis.Services
 {
     public interface ITweetsSearch
     {
-        List<string> GetTweets(string tag);
+        IList<string> GetTweets(string tag);
     }
 }
