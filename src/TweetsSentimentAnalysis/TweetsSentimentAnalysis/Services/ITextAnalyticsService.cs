@@ -8,8 +8,8 @@ namespace TweetsSentimentAnalysis.Services
 {
     interface ITextAnalyticsService
     {
-        Task<List<ResultModel>> Sentiment(List<ResultModel> result);
+        Task<IList<ResultModel>> Sentiment(IList<ResultModel> result);
 
-        Task<List<ResultModel>> Language(List<string> tweett);
+        Task<IList<ResultModel>> Language(IList<string> tweett);
     }
 }
