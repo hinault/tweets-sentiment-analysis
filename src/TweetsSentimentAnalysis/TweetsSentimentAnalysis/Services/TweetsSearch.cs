@@ -7,7 +7,7 @@ using Tweetinvi.Models;
 
 namespace TweetsSentimentAnalysis.Services
 {
-    public class TweetsSearch
+    public class TweetsSearch : ITweetsSearch
     {
 
 
