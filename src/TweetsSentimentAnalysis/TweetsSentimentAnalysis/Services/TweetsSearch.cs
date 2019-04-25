@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,11 +13,15 @@ namespace TweetsSentimentAnalysis.Services
     {
 
         private readonly ILogger<TweetsSearch> _logger;
+        private readonly IConfiguration _config;
 
-        public TweetsSearch(ILogger<TweetsSearch> logger)
+        public TweetsSearch(ILogger<TweetsSearch> logger, IConfiguration config)
         {
-            Auth.SetUserCredentials("CONSUMER_KEY", "CONSUMER_SECRET", "ACCESS_TOKEN", "ACCESS_TOKEN_SECRET");
+            _config = config;
+            Auth.SetUserCredentials(_config.GetValue<string>("Twitter:ConsumerKey"), _config.GetValue<string>("Twitter:ConsumerSecret"),
+                _config.GetValue<string>("Twitter:AccesToken"), _config.GetValue<string>("Twitter:AccesTokenSecret"));
             _logger = logger;
+           
         }
 
         public List<string> GetTweets(string tag)
@@ -29,7 +34,7 @@ namespace TweetsSentimentAnalysis.Services
             var searchParameter = Search.CreateTweetSearchParameter("#"+tag);
 
             
-            searchParameter.SearchType = SearchResultType.Popular;
+            //searchParameter.SearchType = SearchResultType.Popular;
             searchParameter.MaximumNumberOfResults = 100;
             
 

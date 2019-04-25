@@ -21,7 +21,7 @@ namespace TweetsSentimentAnalysis.Pages
 
         public void OnGet()
         {
-            Tweets = _tweetsSearch.GetTweets("Azure");
+            Tweets = _tweetsSearch.GetTweets("GlobalAzure");
         }
     }
 }
