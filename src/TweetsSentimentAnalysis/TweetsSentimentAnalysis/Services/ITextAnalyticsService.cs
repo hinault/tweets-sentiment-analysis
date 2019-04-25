@@ -10,6 +10,6 @@ namespace TweetsSentimentAnalysis.Services
     {
         Task<List<ResultModel>> Sentiment(List<ResultModel> result);
 
-        Task<List<ResultModel>> Language(List<ResultModel> result);
+        Task<List<ResultModel>> Language(List<string> tweett);
     }
 }

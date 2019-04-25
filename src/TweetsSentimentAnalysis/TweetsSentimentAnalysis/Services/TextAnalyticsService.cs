@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Azure.CognitiveServices.Language.TextAnalytics;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -12,20 +13,25 @@ namespace TweetsSentimentAnalysis.Services
     {
         private readonly ILogger<TextAnalyticsService> _logger;
         private readonly IConfiguration _config;
+        private readonly ITextAnalyticsClient _client;
 
-        public TextAnalyticsService(ILogger<TextAnalyticsService> logger, IConfiguration config)
+        public TextAnalyticsService(ILogger<TextAnalyticsService> logger, IConfiguration config, ITextAnalyticsClient client)
         {
             _config = config;
             _logger = logger;
+            _client = client;
         }
-        public Task<List<ResultModel>> Language(List<ResultModel> result)
+        public Task<List<ResultModel>> Language(List<string> tweets)
         {
             throw new NotImplementedException();
         }
+
+      
 
         public Task<List<ResultModel>> Sentiment(List<ResultModel> result)
         {
             throw new NotImplementedException();
         }
+
     }
 }
