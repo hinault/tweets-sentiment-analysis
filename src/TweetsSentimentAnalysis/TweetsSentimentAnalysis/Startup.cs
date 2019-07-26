@@ -33,13 +33,16 @@ namespace TweetsSentimentAnalysis
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-           
+
+            //Ajout du client TextAnalytics au conteneur d'IoC
             services.AddSingleton<ITextAnalyticsClient>(s=> new TextAnalyticsClient(new ApiKeyServiceClientCredentials(Configuration.GetValue<string>("Textanalytics:SubscriptionKey")))
             {
                 Endpoint = Configuration.GetValue<string>("Textanalytics:EndPoint")
             });
 
-            services.AddSingleton<ITweetsSearch, TweetsSearch>();
+            //Ajout du service TweetsSearch au conteneur d'IoC
+            services.AddTransient<ITweetsSearch, TweetsSearch>();
+            //Ajout du service TextAnalyticsService au conteneur d'IoC
             services.AddTransient<ITextAnalyticsService, TextAnalyticsService>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
