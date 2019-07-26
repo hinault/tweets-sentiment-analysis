@@ -40,7 +40,7 @@ namespace TweetsSentimentAnalysis.Services
         /// Méthode pour obtenir les tweets Twitter en fonction du Tag
         /// </summary>
         /// <param name="tag">Paramètre utilisé pour filtrer les tweets</param>
-        /// <returns>Retrourne une liste de sting</returns>
+        /// <returns>Liste de sting</returns>
         public IList<string> GetTweets(string tag)
         {
             //Authentification de l'application
