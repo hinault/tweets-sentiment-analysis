@@ -25,11 +25,21 @@ namespace TweetsSentimentAnalysis.Services
         /// </summary>
         private readonly ITextAnalyticsClient _client;
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="logger"></param>
+        /// <param name="client"></param>
         public TextAnalyticsService(ILogger<TextAnalyticsService> logger,  ITextAnalyticsClient client)
         {
             _logger = logger;
             _client = client;
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="tweets"></param>
+        /// <returns></returns>
         public async Task<IList<ResultModel>> Language(IList<string> tweets)
         {
 
@@ -61,8 +71,12 @@ namespace TweetsSentimentAnalysis.Services
             return resultsModel;
         }
 
-      
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="tweets"></param>
+        /// <returns></returns>
         public async Task<IList<ResultModel>> Sentiment(IList<ResultModel> result)
         {
             _logger.LogInformation("TextAnalyticsService.Sentiment called");
