@@ -10,15 +10,23 @@ using TweetsSentimentAnalysis.Models;
 
 namespace TweetsSentimentAnalysis.Services
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class TextAnalyticsService : ITextAnalyticsService
     {
+        /// <summary>
+        /// 
+        /// </summary>
         private readonly ILogger<TextAnalyticsService> _logger;
-        private readonly IConfiguration _config;
+  
+        /// <summary>
+        /// 
+        /// </summary>
         private readonly ITextAnalyticsClient _client;
 
-        public TextAnalyticsService(ILogger<TextAnalyticsService> logger, IConfiguration config, ITextAnalyticsClient client)
+        public TextAnalyticsService(ILogger<TextAnalyticsService> logger,  ITextAnalyticsClient client)
         {
-            _config = config;
             _logger = logger;
             _client = client;
         }
